@@ -1,16 +1,4 @@
-from pathlib import Path
-import re
-
-source_path = Path("/mnt/data/Pasted code.ts")
-source = source_path.read_text(encoding="utf-8")
-
-css_match = re.search(r"<style>\{`(.*?)`\}</style>", source, flags=re.S)
-if not css_match:
-    raise ValueError("Could not locate the embedded CSS in the supplied support component.")
-
-css = css_match.group(1).strip()
-
-document = f"""<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -26,15 +14,15 @@ document = f"""<!doctype html>
     <style>
         *,
         *::before,
-        *::after {{
+        *::after {
             box-sizing: border-box;
-        }}
+        }
 
-        html {{
+        html {
             scroll-behavior: smooth;
-        }}
+        }
 
-        body {{
+        body {
             margin: 0;
             min-width: 320px;
             background: #F9FAFB;
@@ -42,18 +30,204 @@ document = f"""<!doctype html>
             font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
-        }}
+        }
 
-        img {{
+        img {
             max-width: 100%;
-        }}
+        }
 
-        a:focus-visible {{
+        a:focus-visible {
             outline: 3px solid rgba(16, 190, 191, 0.35);
             outline-offset: 3px;
-        }}
+        }
 
-{css}
+.support-outer {
+                    width: 100%;
+                    padding: 64px 0 72px;
+                    display: flex;
+                    justify-content: center;
+                    background: #F9FAFB;
+                    box-sizing: border-box;
+                }
+
+                .support-container {
+                    width: 100%;
+                    max-width: 1040px;
+                    padding: 0 20px;
+                    box-sizing: border-box;
+                }
+
+                .support-top {
+                    text-align: center;
+                    margin-bottom: 32px;
+                }
+
+                .support-logo {
+                    width: 180px;
+                    max-width: 100%;
+                    margin: 0 auto 18px;
+                    display: block;
+                }
+
+                .support-eyebrow {
+                    margin: 0 0 8px;
+                    font-size: 13px;
+                    font-weight: 700;
+                    letter-spacing: 0.08em;
+                    text-transform: uppercase;
+                    color: #10BEBF;
+                }
+
+                .support-title {
+                    margin: 0;
+                    font-size: 30px;
+                    font-weight: 800;
+                    line-height: 1.15;
+                    color: #111827;
+                }
+
+                .support-sub {
+                    margin: 12px auto 0;
+                    max-width: 720px;
+                    font-size: 15px;
+                    line-height: 1.65;
+                    color: #4B5563;
+                }
+
+                .support-grid {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 18px;
+                }
+
+                .support-card {
+                    background: #FFFFFF;
+                    border-radius: 22px;
+                    padding: 22px 18px;
+                    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+                    border: 1px solid #E5E7EB;
+                    box-sizing: border-box;
+                }
+
+                .support-card h2 {
+                    margin: 0 0 10px;
+                    font-size: 20px;
+                    font-weight: 800;
+                    line-height: 1.2;
+                    color: #111827;
+                }
+
+                .support-card p {
+                    margin: 0 0 12px;
+                    font-size: 15px;
+                    line-height: 1.7;
+                    color: #4B5563;
+                }
+
+                .support-list {
+                    margin: 0;
+                    padding-left: 18px;
+                    color: #4B5563;
+                }
+
+                .support-list li {
+                    margin-bottom: 8px;
+                    font-size: 15px;
+                    line-height: 1.65;
+                }
+
+                .support-pill {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: rgba(16,190,191,0.10);
+                    color: #10BEBF;
+                    font-size: 12px;
+                    font-weight: 700;
+                    margin-bottom: 14px;
+                }
+
+                .support-email {
+                    display: inline-block;
+                    margin-top: 6px;
+                    color: #10BEBF;
+                    font-size: 17px;
+                    font-weight: 700;
+                    line-height: 1.4;
+                    text-decoration: none;
+                    word-break: break-word;
+                }
+
+                .support-bottom {
+                    margin-top: 24px;
+                    text-align: center;
+                }
+
+                .support-home-link {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 13px 22px;
+                    border-radius: 999px;
+                    background: #10BEBF;
+                    color: #FFFFFF;
+                    text-decoration: none;
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+
+                .support-home-link:hover {
+                    opacity: 0.92;
+                }
+
+                /* Tablet */
+                @media (min-width: 768px) {
+                    .support-outer {
+                        padding: 72px 0 84px;
+                    }
+
+                    .support-container {
+                        padding: 0 28px;
+                    }
+
+                    .support-title {
+                        font-size: 40px;
+                    }
+
+                    .support-sub {
+                        font-size: 16px;
+                    }
+
+                    .support-grid {
+                        grid-template-columns: 1fr 1fr;
+                        gap: 20px;
+                    }
+
+                    .support-card {
+                        padding: 26px 22px;
+                    }
+                }
+
+                /* Desktop */
+                @media (min-width: 1200px) {
+                    .support-container {
+                        padding: 0 32px;
+                    }
+
+                    .support-title {
+                        font-size: 44px;
+                    }
+
+                    .support-grid {
+                        gap: 24px;
+                    }
+
+                    .support-card {
+                        padding: 28px 24px;
+                    }
+                }
     </style>
 </head>
 <body>
@@ -148,12 +322,3 @@ document = f"""<!doctype html>
     </main>
 </body>
 </html>
-"""
-
-output_dir = Path("/mnt/data/support")
-output_dir.mkdir(parents=True, exist_ok=True)
-output_path = output_dir / "index.html"
-output_path.write_text(document, encoding="utf-8")
-
-print(f"Created {output_path}")
-print(f"Size: {output_path.stat().st_size:,} bytes")
