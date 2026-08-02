@@ -1,0 +1,1252 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10BEBF">
+    <meta name="description" content="Simple P.A.W.S. helps pet parents track wellness, manage care, and reduce stress with Shine-powered guidance.">
+    <title>Simple P.A.W.S. — Pet Access Without Stress</title>
+
+    <style>
+        :root {
+            --brand: #10BEBF;
+            --brand-soft: rgba(16, 190, 191, 0.12);
+            --text: #111827;
+            --muted: #4B5563;
+            --surface: #FFFFFF;
+            --surface-soft: #F9FAFB;
+            --footer: #020617;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            background: var(--surface);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img,
+        svg {
+            display: block;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid rgba(16, 190, 191, 0.35);
+            outline-offset: 3px;
+        }
+
+        .sp-page {
+            width: 100%;
+            background: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        .sp-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sp-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 1200px) {
+            .sp-container {
+                padding: 0 32px;
+            }
+        }
+
+        /* HERO */
+        .hero-outer {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(16, 190, 191, 0.13), #FFFFFF);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: center;
+        }
+
+        .hero-logo,
+        .final-logo {
+            width: 160px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .hero-headline,
+        .final-headline {
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0;
+            color: var(--text);
+        }
+
+        .hero-sub,
+        .final-sub {
+            font-size: 18px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .store-cta-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-btn,
+        .final-btn,
+        .google-play-btn {
+            width: 100%;
+            max-width: 280px;
+            min-height: 50px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-btn,
+        .final-btn {
+            background: var(--brand);
+            border: none;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 24px rgba(16, 190, 191, 0.24);
+            transition: filter 0.2s ease, transform 0.2s ease;
+        }
+
+        .hero-btn:hover,
+        .final-btn:hover {
+            filter: brightness(0.96);
+            transform: translateY(-1px);
+        }
+
+        .google-play-btn {
+            background: #FFFFFF;
+            border: 2px solid rgba(16, 190, 191, 0.35);
+            color: var(--brand);
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+
+        .hero-app-image,
+        .final-app-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container,
+            .final-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .hero-left,
+            .final-left {
+                text-align: left;
+            }
+
+            .hero-logo,
+            .final-logo {
+                margin: 0;
+            }
+
+            .store-cta-stack {
+                align-items: flex-start;
+            }
+
+            .hero-headline,
+            .final-headline {
+                font-size: 42px;
+            }
+        }
+
+        /* FEATURES */
+        .features-outer {
+            padding: 60px 0;
+            background: #FFFFFF;
+        }
+
+        .features-title-wrap {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .features-title {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 64px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            background: rgba(16, 190, 191, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 16px;
+        }
+
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--brand);
+        }
+
+        .feature-title {
+            margin: 0 0 8px;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .feature-desc {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        @media (min-width: 601px) and (max-width: 1199px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 48px;
+            }
+
+            .features-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 48px;
+            }
+
+            .features-title {
+                font-size: 30px;
+            }
+        }
+
+        /* SHINE */
+        .shine-outer {
+            padding: 60px 0;
+            background: #FFFFFF;
+        }
+
+        .shine-container {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .shine-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+            order: 1;
+        }
+
+        .shine-title {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--text);
+        }
+
+        .shine-body {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--muted);
+        }
+
+        .shine-photo {
+            width: 100%;
+            height: 240px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            order: 2;
+        }
+
+        .shine-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
+        }
+
+        .shine-glow {
+            position: absolute;
+            inset: 0;
+            background: rgba(16, 190, 191, 0.12);
+            pointer-events: none;
+        }
+
+        .shine-quote-card {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .shine-quote {
+            margin: 0;
+            font-size: 12px;
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.3;
+            color: var(--text);
+        }
+
+        .shine-cite {
+            font-size: 12px;
+            color: var(--brand);
+            font-weight: 600;
+        }
+
+        .shine-video-card {
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            border: 2px solid rgba(16, 190, 191, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            background: #FFFFFF;
+            text-align: left;
+        }
+
+        .shine-video-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--brand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .shine-video-title {
+            margin: 0;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .shine-video-copy {
+            margin: 0;
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .shine-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 8px;
+        }
+
+        .shine-stat {
+            text-align: center;
+        }
+
+        .shine-stat-number {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--brand);
+        }
+
+        .shine-stat-label {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        @media (min-width: 601px) and (max-width: 1199px) {
+            .shine-container {
+                flex-direction: row;
+                gap: 32px;
+            }
+
+            .shine-photo {
+                height: 300px;
+                flex: 1;
+                order: 1;
+            }
+
+            .shine-right {
+                flex: 1;
+                text-align: left;
+                justify-content: center;
+                order: 2;
+            }
+
+            .shine-title {
+                font-size: 26px;
+            }
+
+            .shine-photo img {
+                object-position: center 25%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .shine-container {
+                flex-direction: row;
+                gap: 40px;
+            }
+
+            .shine-photo {
+                height: 360px;
+                flex: 1;
+                order: 1;
+            }
+
+            .shine-right {
+                flex: 1;
+                text-align: left;
+                order: 2;
+            }
+
+            .shine-title {
+                font-size: 30px;
+            }
+
+            .shine-photo img {
+                object-position: center 33%;
+            }
+        }
+
+        /* TEAM */
+        .team-outer {
+            padding: 60px 0;
+            background: var(--surface-soft);
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .team-title {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .team-sub {
+            margin: 10px 0 0;
+            font-size: 16px;
+            color: var(--muted);
+        }
+
+        .team-accent {
+            font-size: 16px;
+            margin-top: 10px;
+            color: var(--brand);
+            font-weight: 600;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-card {
+            width: 100%;
+            max-width: 280px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 26px 20px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .team-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 14px;
+        }
+
+        .team-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 6px 0 0;
+            color: var(--text);
+        }
+
+        .team-roles {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .team-pill {
+            padding: 6px 12px;
+            background: var(--brand-soft);
+            color: var(--brand);
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        @media (min-width: 601px) and (max-width: 1199px) {
+            .team-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 32px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .team-grid {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 36px;
+            }
+
+            .team-card {
+                flex-shrink: 0;
+            }
+        }
+
+        /* TESTIMONIALS */
+        .test-outer {
+            padding: 60px 0;
+            background: var(--surface-soft);
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .test-title {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .test-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        .test-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .test-star {
+            width: 16px;
+            height: 16px;
+            background: var(--brand);
+            border-radius: 4px;
+        }
+
+        .test-quote {
+            margin: 0 0 16px;
+            font-size: 16px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        .test-author-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .test-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--brand);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .test-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (min-width: 601px) {
+            .test-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+
+            .test-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .test-grid {
+                gap: 28px;
+            }
+
+            .test-title {
+                font-size: 30px;
+            }
+        }
+
+        /* FINAL CTA */
+        .final-outer {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(16, 190, 191, 0.13), #FFFFFF);
+        }
+
+        .final-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .final-left {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: center;
+        }
+
+        /* FOOTER */
+        .foot-outer {
+            width: 100%;
+            padding: 48px 0 32px;
+            background: var(--footer);
+            color: #E5E7EB;
+        }
+
+        .foot-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .foot-logo {
+            width: 180px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 12px;
+        }
+
+        .foot-tagline {
+            margin: 0;
+            font-size: 15px;
+            color: #D1D5DB;
+            line-height: 1.4;
+        }
+
+        .foot-heading {
+            margin: 0 0 16px;
+            color: #E5E7EB;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .foot-socials {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .foot-social-item {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #0B1221;
+            border: 1px solid #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .foot-social-item:hover {
+            background: #111827;
+            color: #FFFFFF;
+        }
+
+        .foot-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .foot-link {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .foot-link:hover {
+            color: #FFFFFF;
+        }
+
+        .foot-divider {
+            height: 1px;
+            width: 100%;
+            background: #1F2937;
+            margin-bottom: 20px;
+        }
+
+        .foot-bottom {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        @media (min-width: 601px) {
+            .foot-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 48px;
+            }
+
+            .foot-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        /* VIDEO MODAL */
+        .shine-modal-outer {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 9999;
+        }
+
+        .shine-modal-outer.is-open {
+            display: flex;
+        }
+
+        .shine-modal-inner {
+            width: 100%;
+            max-width: 900px;
+            background: #000000;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .shine-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99;
+        }
+
+        .shine-iframe-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            position: relative;
+        }
+
+        .shine-iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .no-scroll {
+            overflow: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="sp-page">
+        <section class="sp-section hero-outer">
+            <div class="sp-container hero-container">
+                <div class="hero-left">
+                    <img
+                        class="hero-logo"
+                        src="https://ljgkncwxmxmiykkxatyu.supabase.co/storage/v1/object/public/Simple%20P.A.W.S%20Logos/simple-paws-logo-2-3i_kRcMB.png"
+                        alt="Simple P.A.W.S."
+                    >
+                    <h1 class="hero-headline">Anytime, Anywhere.</h1>
+                    <p class="hero-sub">A Shine-powered platform that helps pet parents track wellness, manage care, and reduce stress.</p>
+                    <div class="store-cta-stack">
+                        <a
+                            class="hero-btn"
+                            href="https://apps.apple.com/us/app/simple-p-a-w-s/id6761601162"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Download Simple P.A.W.S. on the App Store"
+                        >Download on the App Store</a>
+                        <button type="button" class="google-play-btn" disabled>Google Play Coming Soon</button>
+                    </div>
+                </div>
+
+                <img
+                    class="hero-app-image"
+                    src="https://ljgkncwxmxmiykkxatyu.supabase.co/storage/v1/object/public/Simple%20P.A.W.S%20Logos/f7285b3a0dc366226a63c3db924d525aab8ddcb9.png"
+                    alt="Simple P.A.W.S. mobile app"
+                >
+            </div>
+        </section>
+
+        <section class="sp-section features-outer">
+            <div class="sp-container">
+                <div class="features-title-wrap">
+                    <h2 class="features-title">Why Pet Parents Choose Simple P.A.W.S.</h2>
+                </div>
+
+                <div class="features-grid">
+                    <article class="feature-item">
+                        <div class="feature-icon-wrap" aria-hidden="true">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Comprehensive Pet Profiles</h3>
+                        <p class="feature-desc">All your pet's info in one secure, shareable record — from vet visits to favorite toys.</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <div class="feature-icon-wrap" aria-hidden="true">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <polyline points="12 7 12 12 15 15"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Smart Reminders</h3>
+                        <p class="feature-desc">Never miss a vaccination, appointment, or wellness check.</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <div class="feature-icon-wrap" aria-hidden="true">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3v2"></path>
+                                <path d="M12 19v2"></path>
+                                <path d="M4.22 4.22l1.42 1.42"></path>
+                                <path d="M18.36 18.36l1.42 1.42"></path>
+                                <path d="M1 12h2"></path>
+                                <path d="M21 12h2"></path>
+                                <path d="M4.22 19.78l1.42-1.42"></path>
+                                <path d="M18.36 5.64l1.42-1.42"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Ask Shine™ AI</h3>
+                        <p class="feature-desc">Instant answers to your pet parenting questions, backed by real expertise.</p>
+                    </article>
+
+                    <article class="feature-item">
+                        <div class="feature-icon-wrap" aria-hidden="true">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="7" y="2" width="10" height="20" rx="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">iOS App Store Ready</h3>
+                        <p class="feature-desc">Download Simple P.A.W.S. from the App Store today. Google Play is coming soon.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-section shine-outer">
+            <div class="sp-container shine-container">
+                <div class="shine-right">
+                    <h2 class="shine-title">From the Ground Up — Shine’s Journey.</h2>
+                    <p class="shine-body">Shine worked her way up through the pet industry ranks, helping pet parents protect what matters most. Simple P.A.W.S. is her way of giving back.</p>
+
+                    <button id="open-video" class="shine-video-card" type="button" aria-haspopup="dialog" aria-controls="shine-video-modal">
+                        <span class="shine-video-icon" aria-hidden="true">▶</span>
+                        <span>
+                            <span class="shine-video-title">Watch Shine’s Story</span>
+                            <span class="shine-video-copy">Learn about the passion behind Simple P.A.W.S.</span>
+                        </span>
+                    </button>
+
+                    <div class="shine-stats">
+                        <div class="shine-stat">
+                            <div class="shine-stat-number">10+</div>
+                            <div class="shine-stat-label">Years Experience</div>
+                        </div>
+                        <div class="shine-stat">
+                            <div class="shine-stat-number">1000+</div>
+                            <div class="shine-stat-label">Pets Helped</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shine-photo">
+                    <div class="shine-glow" aria-hidden="true"></div>
+                    <img
+                        src="https://storage.googleapis.com/msgsndr/fYVQWqjkeY6eFal4IEZ0/media/692d2bcf96dd5bb641260e8a.jpg"
+                        alt="Shine, founder of Simple P.A.W.S."
+                        loading="lazy"
+                    >
+                    <div class="shine-quote-card">
+                        <p class="shine-quote">“This app is built by pet parents, for pet parents.”</p>
+                        <span class="shine-cite">— Shine</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-section team-outer">
+            <div class="sp-container">
+                <div class="team-header">
+                    <h2 class="team-title">The Team Behind the P.A.W.S.</h2>
+                    <p class="team-sub">Decades of combined experience in pet care, tech, and business.</p>
+                    <p class="team-accent">Together, we're building a stress-free future for pets and their people.</p>
+                </div>
+
+                <div class="team-grid">
+                    <article class="team-card">
+                        <img class="team-avatar" src="https://storage.googleapis.com/msgsndr/fYVQWqjkeY6eFal4IEZ0/media/692d2bcf96dd5bb641260e8a.jpg" alt="Shine" loading="lazy">
+                        <h3 class="team-name">Shine</h3>
+                        <div class="team-roles">
+                            <span class="team-pill">Industry Veteran</span>
+                            <span class="team-pill">Pet Parent Advocate</span>
+                            <span class="team-pill">AI Visionary</span>
+                        </div>
+                    </article>
+
+                    <article class="team-card">
+                        <img class="team-avatar" src="https://storage.googleapis.com/msgsndr/fYVQWqjkeY6eFal4IEZ0/media/98c042a6-218e-44de-b7d9-d38009a75f26.png" alt="Munir" loading="lazy">
+                        <h3 class="team-name">Munir</h3>
+                        <div class="team-roles">
+                            <span class="team-pill">Tech Strategist</span>
+                            <span class="team-pill">Systems Builder</span>
+                            <span class="team-pill">Product Visionary</span>
+                        </div>
+                    </article>
+
+                    <article class="team-card">
+                        <img class="team-avatar" src="https://storage.googleapis.com/msgsndr/fYVQWqjkeY6eFal4IEZ0/media/692d2bcf82f4c5116446b37e.png" alt="Robert" loading="lazy">
+                        <h3 class="team-name">Robert</h3>
+                        <div class="team-roles">
+                            <span class="team-pill">Software Developer</span>
+                            <span class="team-pill">Business Engineer</span>
+                            <span class="team-pill">Growth Architect</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-section test-outer">
+            <div class="sp-container">
+                <div class="test-header">
+                    <h2 class="test-title">Trusted by Pet Parents Like You</h2>
+                </div>
+
+                <div class="test-grid">
+                    <article class="test-card">
+                        <div class="test-stars" aria-label="5 out of 5 stars">
+                            <span class="test-star"></span><span class="test-star"></span><span class="test-star"></span><span class="test-star"></span><span class="test-star"></span>
+                        </div>
+                        <blockquote class="test-quote">“Finally — an app that actually understands what pet parents need. Everything I need for my dog is just one tap away.”</blockquote>
+                        <div class="test-author-row">
+                            <div class="test-avatar" aria-hidden="true">EU</div>
+                            <div class="test-author">— Early User</div>
+                        </div>
+                    </article>
+
+                    <article class="test-card">
+                        <div class="test-stars" aria-label="5 out of 5 stars">
+                            <span class="test-star"></span><span class="test-star"></span><span class="test-star"></span><span class="test-star"></span><span class="test-star"></span>
+                        </div>
+                        <blockquote class="test-quote">“Ask Shine feels like talking to a friend who's been in the pet industry forever. Love it!”</blockquote>
+                        <div class="test-author-row">
+                            <div class="test-avatar" aria-hidden="true">BT</div>
+                            <div class="test-author">— Beta Tester</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-section final-outer">
+            <div class="sp-container final-container">
+                <div class="final-left">
+                    <img
+                        class="final-logo"
+                        src="https://ljgkncwxmxmiykkxatyu.supabase.co/storage/v1/object/public/Simple%20P.A.W.S%20Logos/simple-paws-logo-2-3i_kRcMB.png"
+                        alt="Simple P.A.W.S."
+                        loading="lazy"
+                    >
+                    <h2 class="final-headline">Start Your Simple P.A.W.S Journey Today.</h2>
+                    <p class="final-sub">Keep your pet protected with one simple tap.</p>
+                    <div class="store-cta-stack">
+                        <a
+                            class="final-btn"
+                            href="https://apps.apple.com/us/app/simple-p-a-w-s/id6761601162"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Download Simple P.A.W.S. on the App Store"
+                        >Download on the App Store</a>
+                        <button type="button" class="google-play-btn" disabled>Google Play Coming Soon</button>
+                    </div>
+                </div>
+
+                <img
+                    class="final-app-image"
+                    src="https://ljgkncwxmxmiykkxatyu.supabase.co/storage/v1/object/public/Simple%20P.A.W.S%20Logos/f7285b3a0dc366226a63c3db924d525aab8ddcb9.png"
+                    alt="Simple P.A.W.S. mobile app"
+                    loading="lazy"
+                >
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot-outer">
+        <div class="sp-container">
+            <div class="foot-grid">
+                <div>
+                    <img
+                        src="https://ljgkncwxmxmiykkxatyu.supabase.co/storage/v1/object/public/Simple%20P.A.W.S%20Logos/simple-paws-logo-2-3i_kRcMB.png"
+                        class="foot-logo"
+                        alt="Simple P.A.W.S. logo"
+                        loading="lazy"
+                    >
+                    <p class="foot-tagline">Simple P.A.W.S. — Pet Access Without Stress.</p>
+
+                    <nav class="foot-links" aria-label="Footer navigation">
+                        <a href="/privacy" class="foot-link">Privacy</a>
+                        <a href="/support" class="foot-link">Support</a>
+                    </nav>
+                </div>
+
+                <div>
+                    <h2 class="foot-heading">Follow Us</h2>
+                    <div class="foot-socials">
+                        <a href="https://www.instagram.com/simplepawsapp?igsh=OTBrYWNveHZhcW03" target="_blank" rel="noopener noreferrer" class="foot-social-item" aria-label="Simple P.A.W.S. on Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+
+                        <a href="https://youtube.com/@simplepawsapp?si=N8guxLNodtO03xWV" target="_blank" rel="noopener noreferrer" class="foot-social-item" aria-label="Simple P.A.W.S. on YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M23.5 6.2s-.2-1.6-.8-2.3a3 3 0 0 0-2.1-.8C17.3 3 12 3 12 3h0s-5.3 0-8.6.1A3 3 0 0 0 1.3 3.9c-.6.7-.8 2.3-.8 2.3A31.4 31.4 0 0 0 0 12v1.6a31.4 31.4 0 0 0 .5 5.8s.2 1.6.8 2.3a3.4 3.4 0 0 0 2.3.9c1.7.1 7 .1 7 .1s5.3 0 8.6-.1c.9 0 1.7-.3 2.3-.9.6-.7.8-2.3.8-2.3.3-1.9.5-3.8.5-5.8V12c0-2-.2-3.9-.5-5.8zM9.7 15.6V8.4l6.3 3.6-6.3 3.6z"></path>
+                            </svg>
+                        </a>
+
+                        <a href="https://www.linkedin.com/company/simplepawsapp/" target="_blank" rel="noopener noreferrer" class="foot-social-item" aria-label="Simple P.A.W.S. on LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M16 8a6 6 0 0 1 6 6v7H18v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7H10v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+
+                        <a href="https://www.tiktok.com/@ask_shine?_r=1&amp;_t=ZP-91raqzh1rY7" target="_blank" rel="noopener noreferrer" class="foot-social-item" aria-label="Ask Shine on TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 2a1 1 0 0 1 1 1c0 2.4 1.8 4.4 4.1 4.7a1 1 0 0 1 .9 1v2.2a1 1 0 0 1-1.4.9c-1-.4-2-.9-2.8-1.6v5.8a6 6 0 1 1-6-6 1 1 0 0 1 1 1v2a1 1 0 0 1-.7 1 2 2 0 1 0 2.7 1.8V3a1 1 0 0 1 1-1z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="foot-divider"></div>
+
+            <div class="foot-bottom">
+                <span>© 2026 Simple P.A.W.S. All rights reserved.</span>
+                <span>Built with ❤️ for pet parents everywhere.</span>
+            </div>
+        </div>
+    </footer>
+
+    <div id="shine-video-modal" class="shine-modal-outer" role="dialog" aria-modal="true" aria-labelledby="shine-video-title" aria-hidden="true">
+        <div class="shine-modal-inner">
+            <button id="close-video" class="shine-close" type="button" aria-label="Close video">✕</button>
+            <div class="shine-iframe-wrap">
+                <iframe
+                    id="shine-video-frame"
+                    class="shine-iframe"
+                    title="Shine's Simple P.A.W.S. story"
+                    src=""
+                    data-src="https://www.youtube.com/embed/fahDrqMRSMk?autoplay=1"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            const modal = document.getElementById('shine-video-modal');
+            const frame = document.getElementById('shine-video-frame');
+            const openButton = document.getElementById('open-video');
+            const closeButton = document.getElementById('close-video');
+
+            if (!modal || !frame || !openButton || !closeButton) return;
+
+            const openModal = () => {
+                frame.src = frame.dataset.src || '';
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('no-scroll');
+                closeButton.focus();
+            };
+
+            const closeModal = () => {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                frame.src = '';
+                document.body.classList.remove('no-scroll');
+                openButton.focus();
+            };
+
+            openButton.addEventListener('click', openModal);
+            closeButton.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
